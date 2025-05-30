@@ -72,6 +72,16 @@ void Character_update(Elements *self)
             chara->dir = true;
             chara->state = MOVE;
         }
+        else if (key_state[ALLEGRO_KEY_W])
+        {
+            _Character_update_position(self, 0, -5);
+            chara->state = MOVE;
+        }
+        else if (key_state[ALLEGRO_KEY_S])
+        {
+            _Character_update_position(self, 0, 5);
+            chara->state = MOVE;
+        }
         else
         {
             chara->state = STOP;
@@ -87,6 +97,16 @@ void Character_update(Elements *self)
         {
             chara->dir = false;
             _Character_update_position(self, -5, 0);
+            chara->state = MOVE;
+        }
+        else if (key_state[ALLEGRO_KEY_W])
+        {
+            _Character_update_position(self, 0, -5);
+            chara->state = MOVE;
+        }
+        else if (key_state[ALLEGRO_KEY_S])
+        {
+            _Character_update_position(self, 0, 5);
             chara->state = MOVE;
         }
         else if (key_state[ALLEGRO_KEY_D])

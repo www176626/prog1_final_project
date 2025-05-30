@@ -3,10 +3,13 @@
 #include <allegro5/allegro_image.h>
 #include "charater.h"
 #include "projectile.h"
+#include "../element/questNode.h"
 #include "../scene/sceneManager.h"
 #include "../shapes/Rectangle.h"
 #include "../algif5/algif.h"
 #include "../scene/gamescene.h"
+#include "../shapes/Shape.h"
+#include "../shapes/Rectangle.h"
 #include <stdio.h>
 #include <stdbool.h>
 /*
@@ -45,6 +48,10 @@ Elements *New_Character(int label)
     pDerivedObj->state = STOP;
     pDerivedObj->new_proj = false;
     pObj->pDerivedObj = pDerivedObj;
+
+    //setting interact objects
+    pObj->inter_obj[pObj->inter_len++]=questNode_L;
+
     // setting derived object function
     pObj->Draw = Character_draw;
     pObj->Update = Character_update;
@@ -182,4 +189,25 @@ void _Character_update_position(Elements *self, int dx, int dy)
     hitbox->update_center_y(hitbox, dy);
 }
 
-void Character_interact(Elements *self) {}
+void character_interact_questNode(Elements *self, Elements *tar){
+    Character *obj = ((Character*)self->pDerivedObj);
+    questNode *qn = ((questNode*)tar->pDerivedObj);
+
+    if(obj->hitbox->overlap(obj->hitbox, qn->hitbox)){
+        printf("HIT");
+    }
+}
+
+void Character_interact(Elements *self) {
+
+    for(int i=0; i<self->inter_len; i++){
+        int inter_label = self->inter_obj[i];
+        ElementVec labelEle = _Get_label_elements(scene, inter_label);
+        for(int j=0; j<labelEle.len; j++){
+            if(inter_label==questNode_L){
+                character_interact_questNode(self, labelEle.arr[j]);
+            }
+        }
+    }
+}
+        

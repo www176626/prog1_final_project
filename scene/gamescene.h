@@ -9,7 +9,7 @@ typedef enum EleType
 {
     Floor_L,
     Teleport_L,
-    Tree_L,
+    questNode_L,
     Character_L,
     Projectile_L
 } EleType;

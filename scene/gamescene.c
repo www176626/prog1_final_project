@@ -4,7 +4,7 @@
 #include "../element/charater.h"
 #include "../element/floor.h"
 #include "../element/teleport.h"
-#include "../element/tree.h"
+#include "../element/questNode.h"
 #include "../element/projectile.h"
 /*
    [GameScene function]
@@ -19,8 +19,9 @@ Scene *New_GameScene(int label)
     // register element
     _Register_elements(pObj, New_Floor(Floor_L));
     _Register_elements(pObj, New_Teleport(Teleport_L));
-    _Register_elements(pObj, New_Tree(Tree_L));
+    _Register_elements(pObj, New_questNode(questNode_L, 20, 50));
     _Register_elements(pObj, New_Character(Character_L));
+    
     // setting derived object function
     pObj->Update = game_scene_update;
     pObj->Draw = game_scene_draw;

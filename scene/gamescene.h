@@ -9,18 +9,23 @@ typedef enum EleType
 {
     Floor_L,
     Teleport_L,
-    Tree_L,
+    questNode1_L,
+    questNode2_L,
+    questNode3_L,
+    questNode4_L,
     Character_L,
-    Projectile_L
+    Projectile_L,
+    startButton_L
 } EleType;
+
 typedef struct _GameScene
 {
     ALLEGRO_BITMAP *background;
 
 } GameScene;
-Scene *New_GameScene(int label);
-void game_scene_update(Scene *self);
-void game_scene_draw(Scene *self);
-void game_scene_destroy(Scene *self);
+Scene *New_gamescene(int label);
+void gamescene_update(Scene *self);
+void gamescene_draw(Scene *self);
+void gamescene_destroy(Scene *self);
 
 #endif

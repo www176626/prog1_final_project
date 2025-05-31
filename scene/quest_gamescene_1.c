@@ -1,5 +1,5 @@
 #include <allegro5/allegro_audio.h>
-#include "gamescene.h"
+#include "quest_gamescene_1.h"
 #include "../element/element.h"
 #include "../element/charater.h"
 #include "../element/floor.h"
@@ -7,36 +7,26 @@
 #include "../element/questNode.h"
 #include "../element/projectile.h"
 #include "../element/button.h"
-#include "sceneManager.h"
 /*
-   [GameScene function]
+   [questGame1 function]
 */
-Scene *New_gamescene(int label)
+Scene *New_questGame1(int label)
 {
-    GameScene *pDerivedObj = (GameScene *)malloc(sizeof(GameScene));
+    questGame1 *pDerivedObj = (questGame1 *)malloc(sizeof(questGame1));
     Scene *pObj = New_Scene(label);
     // setting derived object member
     pDerivedObj->background = al_load_bitmap("assets/image/stage.jpg");
     pObj->pDerivedObj = pDerivedObj;
     // register element
-    _Register_elements(pObj, New_Floor(Floor_L));
-    _Register_elements(pObj, New_Teleport(Teleport_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 10, 50, quest_menu_1_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 20, 50, quest_menu_2_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 30, 50, quest_menu_3_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 40, 50, quest_menu_4_L));
-    
-
-    _Register_elements(pObj, New_Character(Character_L));
     
 
     // setting derived object function
-    pObj->Update = gamescene_update;
-    pObj->Draw = gamescene_draw;
-    pObj->Destroy = gamescene_destroy;
+    pObj->Update = questGame1_update;
+    pObj->Draw = questGame1_draw;
+    pObj->Destroy = questGame1_destroy;
     return pObj;
 }
-void gamescene_update(Scene *self)
+void questGame1_update(Scene *self)
 {
     // update every element
     ElementVec allEle = _Get_all_elements(self);
@@ -59,10 +49,10 @@ void gamescene_update(Scene *self)
             _Remove_elements(self, ele);
     }
 }
-void gamescene_draw(Scene *self)
+void questGame1_draw(Scene *self)
 {
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    GameScene *gs = ((GameScene *)(self->pDerivedObj));
+    questGame1 *gs = ((questGame1 *)(self->pDerivedObj));
     al_draw_bitmap(gs->background, 0, 0, 0);
     ElementVec allEle = _Get_all_elements(self);
     for (int i = 0; i < allEle.len; i++)
@@ -71,9 +61,9 @@ void gamescene_draw(Scene *self)
         ele->Draw(ele);
     }
 }
-void gamescene_destroy(Scene *self)
+void questGame1_destroy(Scene *self)
 {
-    GameScene *Obj = ((GameScene *)(self->pDerivedObj));
+    questGame1 *Obj = ((questGame1 *)(self->pDerivedObj));
     ALLEGRO_BITMAP *background = Obj->background;
     al_destroy_bitmap(background);
     ElementVec allEle = _Get_all_elements(self);

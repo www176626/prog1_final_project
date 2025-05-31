@@ -125,12 +125,37 @@ bool game_update(Game *self)
         scene->Destroy(scene);
         switch (window)
         {
-        case 0:
+        case Menu_L:
             create_scene(Menu_L);
             break;
-        case 1:
+        case GameScene_L:
             create_scene(GameScene_L);
             break;
+        case quest_menu_1_L:
+            create_scene(quest_menu_1_L);
+            break;
+        case quest_menu_2_L:
+            create_scene(quest_menu_2_L);
+            break;
+        case quest_menu_3_L:
+            create_scene(quest_menu_3_L);
+            break;
+        case quest_menu_4_L:
+            create_scene(quest_menu_4_L);
+            break;
+        case quest_gameScene_1_L:
+            create_scene(quest_gameScene_1_L);
+            break;
+        case quest_gameScene_2_L:
+            create_scene(quest_gameScene_2_L);
+            break;
+        case quest_gameScene_3_L:
+            create_scene(quest_gameScene_3_L);
+            break;
+        case quest_gameScene_4_L:
+            create_scene(quest_gameScene_4_L);
+            break;
+        
         case -1:
             return false;
         default:

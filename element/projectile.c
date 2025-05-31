@@ -1,5 +1,5 @@
 #include "projectile.h"
-#include "tree.h"
+#include "questNode.h"
 #include "../shapes/Circle.h"
 #include "../scene/gamescene.h" // for element label
 #include "../scene/sceneManager.h" // for scene variable
@@ -21,7 +21,7 @@ Elements *New_Projectile(int label, int x, int y, int v)
                                      pDerivedObj->y + pDerivedObj->height / 2,
                                      min(pDerivedObj->width, pDerivedObj->height) / 2);
     // setting the interact object
-    pObj->inter_obj[pObj->inter_len++] = Tree_L;
+    pObj->inter_obj[pObj->inter_len++] = questNode1_L;
     pObj->inter_obj[pObj->inter_len++] = Floor_L;
     // setting derived object function
     pObj->pDerivedObj = pDerivedObj;
@@ -52,13 +52,14 @@ void Projectile_interact(Elements *self)
     {
         int inter_label = self->inter_obj[j];
         ElementVec labelEle = _Get_label_elements(scene, inter_label);
+        
         for (int i = 0; i < labelEle.len; i++)
         {
             if (inter_label == Floor_L)
             {
                 _Projectile_interact_Floor(self, labelEle.arr[i]);
             }
-            else if (inter_label == Tree_L)
+            else if (inter_label == questNode1_L)
             {
                 _Projectile_interact_Tree(self, labelEle.arr[i]);
             }
@@ -76,7 +77,7 @@ void _Projectile_interact_Floor(Elements *self, Elements *tar)
 void _Projectile_interact_Tree(Elements *self, Elements *tar)
 {
     Projectile *Obj = ((Projectile *)(self->pDerivedObj));
-    Tree *tree = ((Tree *)(tar->pDerivedObj));
+    questNode *tree = ((questNode *)(tar->pDerivedObj));
     if (tree->hitbox->overlap(tree->hitbox, Obj->hitbox))
     {
         self->dele = true;

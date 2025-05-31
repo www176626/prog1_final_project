@@ -190,23 +190,25 @@ void _Character_update_position(Elements *self, int dx, int dy)
 }
 
 void character_interact_questNode(Elements *self, Elements *tar){
-    Character *obj = ((Character*)self->pDerivedObj);
+    Character *chra = ((Character*)self->pDerivedObj);
     questNode *qn = ((questNode*)tar->pDerivedObj);
 
-    if(obj->hitbox->overlap(obj->hitbox, qn->hitbox)){
+    if(chra->hitbox->overlap(chra->hitbox, qn->hitbox)){
         printf("HIT");
+        scene->scene_end=true;
+        window=quest_menu_1_L;
     }
 }
 
 void Character_interact(Elements *self) {
-
     for(int i=0; i<self->inter_len; i++){
         int inter_label = self->inter_obj[i];
+        
         ElementVec labelEle = _Get_label_elements(scene, inter_label);
         for(int j=0; j<labelEle.len; j++){
             if(inter_label==questNode_L){
                 character_interact_questNode(self, labelEle.arr[j]);
-            }
+            }  
         }
     }
 }

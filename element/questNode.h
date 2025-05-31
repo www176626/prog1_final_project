@@ -14,9 +14,9 @@ typedef struct _Tree
     Shape *hitbox; // the hitbox of object
 } questNode;
 Elements *New_questNode(int label, int x, int y);
-void Tree_update(Elements *self);
-void Tree_interact(Elements *self);
-void Tree_draw(Elements *self);
-void Tree_destory(Elements *self);
+void questNode_update(Elements *self);
+void questNode_interact(Elements *self);
+void questNode_draw(Elements *self);
+void questNode_destroy(Elements *self);
 
 #endif

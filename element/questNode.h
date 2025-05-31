@@ -10,10 +10,11 @@ typedef struct _Tree
 {
     int x, y;          // the position of image
     int width, height; // the width and height of image
+    int change_scene;
     ALLEGRO_BITMAP *img;
     Shape *hitbox; // the hitbox of object
 } questNode;
-Elements *New_questNode(int label, int x, int y);
+Elements *New_questNode(int label, int x, int y, int change_scene);
 void questNode_update(Elements *self);
 void questNode_interact(Elements *self);
 void questNode_draw(Elements *self);

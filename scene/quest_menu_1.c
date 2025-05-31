@@ -16,11 +16,33 @@ Scene *New_quest_1_menu(int label)
     quest_1_menu *pDerivedObj = (quest_1_menu *)malloc(sizeof(quest_1_menu));
     Scene *pObj = New_Scene(label);
     // setting derived object member
-    pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
+    switch(label){
+        case quest_menu_1_L:
+            pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
+            _Register_elements(pObj, New_button(StartButton_L, 20,50, al_load_bitmap("assets/image/icon.jpg"), quest_gameScene_1_L));
+            break;
+        case quest_menu_2_L:
+            pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
+            _Register_elements(pObj, New_button(StartButton_L, 20,50, al_load_bitmap("assets/image/icon.jpg"), quest_gameScene_2_L));
+            break;
+        case quest_menu_3_L:
+            pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
+            _Register_elements(pObj, New_button(StartButton_L, 20,50, al_load_bitmap("assets/image/icon.jpg"), quest_gameScene_3_L));
+            break;
+        case quest_menu_4_L:
+            pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
+            _Register_elements(pObj, New_button(StartButton_L, 20,50, al_load_bitmap("assets/image/icon.jpg"), quest_gameScene_4_L));
+            break;
+        default:
+            printf("menu label out of range: %d\n", label);
+            break;
+
+    }
+    
     pObj->pDerivedObj = pDerivedObj;
     
     // register element
-    _Register_elements(pObj, New_button(StartButton_L, 20,50, al_load_bitmap("assets/image/icon.jpg"), GameScene_L));
+    
     
     // setting derived object function
     pObj->Update = quest_1_menu_update;

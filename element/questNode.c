@@ -9,7 +9,7 @@ Elements *New_questNode(int label, int x, int y, int change_scene)
     Elements *pObj = New_Elements(label);
     // setting derived object member
     pDerivedObj->change_scene=change_scene;
-    pDerivedObj->img = al_load_bitmap("assets/image/tree.png");
+    pDerivedObj->img = al_load_bitmap("assets/image/node.png");
     pDerivedObj->width = al_get_bitmap_width(pDerivedObj->img);
     pDerivedObj->height = al_get_bitmap_height(pDerivedObj->img);
     pDerivedObj->x = x;

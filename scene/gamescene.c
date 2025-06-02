@@ -16,15 +16,14 @@ Scene *New_gamescene(int label)
     GameScene *pDerivedObj = (GameScene *)malloc(sizeof(GameScene));
     Scene *pObj = New_Scene(label);
     // setting derived object member
-    pDerivedObj->background = al_load_bitmap("assets/image/stage.jpg");
+    pDerivedObj->background = al_load_bitmap("assets/image/map.png");
     pObj->pDerivedObj = pDerivedObj;
     // register element
-    _Register_elements(pObj, New_Floor(Floor_L));
-    _Register_elements(pObj, New_Teleport(Teleport_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 10, 50, quest_menu_1_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 20, 50, quest_menu_2_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 30, 50, quest_menu_3_L));
-    _Register_elements(pObj, New_questNode(questNode1_L, 40, 50, quest_menu_4_L));
+    
+    _Register_elements(pObj, New_questNode(questNode1_L, 0, 250, quest_menu_1_L));
+    _Register_elements(pObj, New_questNode(questNode1_L, 250, 50, quest_menu_2_L));
+    _Register_elements(pObj, New_questNode(questNode1_L, 500, 150, quest_menu_3_L));
+    _Register_elements(pObj, New_questNode(questNode1_L, 700, 380, quest_menu_4_L));
     
 
     _Register_elements(pObj, New_Character(Character_L));

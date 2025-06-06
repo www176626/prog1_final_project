@@ -1,33 +1,46 @@
 #include <allegro5/allegro_audio.h>
-#include "quest_gamescene_1.h"
+#include "quest_gamescene_phys.h"
 #include "../element/element.h"
-#include "../element/charater.h"
+#include "../element/characterNewton.h"
 #include "../element/floor.h"
-#include "../element/teleport.h"
-#include "../element/questNode.h"
-#include "../element/projectile.h"
+#include "../element/apple.h"
 #include "../element/button.h"
+#include <stdlib.h>
 /*
-   [questGame1 function]
+   [questGamePhys function]
 */
-Scene *New_questGame1(int label)
+Scene *New_questGamePhys(int label)
 {
-    questGame1 *pDerivedObj = (questGame1 *)malloc(sizeof(questGame1));
+    questGamePhys *pDerivedObj = (questGamePhys *)malloc(sizeof(questGamePhys));
     Scene *pObj = New_Scene(label);
     // setting derived object member
     pDerivedObj->background = al_load_bitmap("assets/image/stage.jpg");
     pObj->pDerivedObj = pDerivedObj;
+
     // register element
+    _Register_elements(pObj, New_CharacterNewton(CharacterNewton_L));
     
 
     // setting derived object function
-    pObj->Update = questGame1_update;
-    pObj->Draw = questGame1_draw;
-    pObj->Destroy = questGame1_destroy;
+    pObj->Update = questGamePhys_update;
+    pObj->Draw = questGamePhys_draw;
+    pObj->Destroy = questGamePhys_destroy;
     return pObj;
 }
-void questGame1_update(Scene *self)
+void questGamePhys_update(Scene *self)
 {
+    //add apple 
+    double apple_time = al_get_timer_count(apple_timer);
+    bool add = (100-apple_time)<=0; //time count:FPS
+    // printf("apple_timer: %lf", apple_time);
+    if(add){
+        addApple(self);
+        al_set_timer_count(apple_timer, 0);
+    }
+
+    
+    
+
     // update every element
     ElementVec allEle = _Get_all_elements(self);
     for (int i = 0; i < allEle.len; i++)
@@ -49,10 +62,10 @@ void questGame1_update(Scene *self)
             _Remove_elements(self, ele);
     }
 }
-void questGame1_draw(Scene *self)
+void questGamePhys_draw(Scene *self)
 {
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    questGame1 *gs = ((questGame1 *)(self->pDerivedObj));
+    questGamePhys *gs = ((questGamePhys *)(self->pDerivedObj));
     al_draw_bitmap(gs->background, 0, 0, 0);
     ElementVec allEle = _Get_all_elements(self);
     for (int i = 0; i < allEle.len; i++)
@@ -61,9 +74,9 @@ void questGame1_draw(Scene *self)
         ele->Draw(ele);
     }
 }
-void questGame1_destroy(Scene *self)
+void questGamePhys_destroy(Scene *self)
 {
-    questGame1 *Obj = ((questGame1 *)(self->pDerivedObj));
+    questGamePhys *Obj = ((questGamePhys *)(self->pDerivedObj));
     ALLEGRO_BITMAP *background = Obj->background;
     al_destroy_bitmap(background);
     ElementVec allEle = _Get_all_elements(self);
@@ -74,4 +87,11 @@ void questGame1_destroy(Scene *self)
     }
     free(Obj);
     free(self);
+}
+
+void addApple(Scene* self){
+    int type_of_apple = rand()%2;
+    int pos_x = 150+rand()%(WIDTH-150);
+    int pos_y = -100;
+    _Register_elements(self, New_apple(type_of_apple, pos_x, pos_y, 3));
 }

@@ -19,7 +19,7 @@ Scene *New_quest_1_menu(int label)
     switch(label){
         case quest_menu_1_L:
             pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");
-            _Register_elements(pObj, New_button(StartButton_L, 180,250, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_1_L));
+            _Register_elements(pObj, New_button(StartButton_L, 180,250, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_phys_L));
             break;
         case quest_menu_2_L:
             pDerivedObj->background = al_load_bitmap("assets/image/quest_1_menu.jpg");

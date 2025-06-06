@@ -10,7 +10,7 @@ typedef enum SceneType
     quest_menu_2_L,
     quest_menu_3_L,
     quest_menu_4_L,
-    quest_gameScene_1_L,
+    quest_gameScene_phys_L,
     quest_gameScene_2_L,
     quest_gameScene_3_L,
     quest_gameScene_4_L

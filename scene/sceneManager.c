@@ -1,7 +1,7 @@
 #include "sceneManager.h"
 #include "menu.h"
 #include "gamescene.h"
-#include "quest_gamescene_1.h"
+#include "quest_gamescene_phys.h"
 #include "quest_gamescene_2.h"
 #include "quest_gamescene_3.h"
 #include "quest_gamescene_4.h"
@@ -30,8 +30,8 @@ void create_scene(SceneType type)
     case quest_menu_4_L:
         scene = New_quest_1_menu(quest_menu_4_L);
         break;
-    case quest_gameScene_1_L:
-        scene = New_questGame1(quest_gameScene_1_L);
+    case quest_gameScene_phys_L:
+        scene = New_questGamePhys(quest_gameScene_phys_L);
         break;
     case quest_gameScene_2_L:
         scene = New_questGame2(quest_gameScene_2_L);

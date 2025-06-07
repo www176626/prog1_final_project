@@ -11,26 +11,23 @@
 /*
    [quest_menu function]
 */
-Scene *New_quest_menu(int label)
+Scene *New_quest_menu(int label, ALLEGRO_BITMAP *img)
 {
     quest_menu *pDerivedObj = (quest_menu *)malloc(sizeof(quest_menu));
     Scene *pObj = New_Scene(label);
+    pDerivedObj->background=img;
     // setting derived object member
     switch(label){
         case quest_menu_phys_L:
-            pDerivedObj->background = al_load_bitmap("assets/image/quest_menu.jpg");
             _Register_elements(pObj, New_button(StartButton_L, 180,250, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_phys_L));
             break;
         case quest_menu_2_L:
-            pDerivedObj->background = al_load_bitmap("assets/image/quest_menu.jpg");
             _Register_elements(pObj, New_button(StartButton_L, 100,50, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_2_L));
             break;
         case quest_menu_3_L:
-            pDerivedObj->background = al_load_bitmap("assets/image/quest_menu.jpg");
             _Register_elements(pObj, New_button(StartButton_L, 100,50, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_3_L));
             break;
         case quest_menu_lake_L:
-            pDerivedObj->background = al_load_bitmap("assets/image/quest_menu.jpg");
             _Register_elements(pObj, New_button(StartButton_L, 100,50, al_load_bitmap("assets/image/start_button.png"), quest_gameScene_lake_L));
             break;
         default:

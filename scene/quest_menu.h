@@ -15,7 +15,7 @@ typedef struct _quest_1_menu
     ALLEGRO_BITMAP *background;
 
 } quest_menu;
-Scene *New_quest_menu(int label);
+Scene *New_quest_menu(int label, ALLEGRO_BITMAP *img);
 void quest_menu_update(Scene *self);
 void quest_menu_draw(Scene *self);
 void quest_menu_destroy(Scene *self);

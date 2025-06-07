@@ -1,7 +1,7 @@
 #include "button.h"
 #include "../shapes/Rectangle.h"
 #include "../scene/sceneManager.h"
-#include "../scene/quest_menu_1.h"
+#include "../scene/quest_menu.h"
 #include "../shapes/Shape.h"
 #include "../shapes/Point.h"
 
@@ -43,9 +43,7 @@ void button_update(Elements *self){
     
     button *obj = (button*)self->pDerivedObj;
     // printf("%d", obj->hitbox->overlap(New_Rectangle(mouse.x-1, mouse.y-1, mouse.x+1, mouse.y+1), obj->hitbox));
-    ALLEGRO_MOUSE_STATE state;
-    al_get_mouse_state(&state);
-    if(obj->hitbox->overlap(New_Point(mouse.x, mouse.y), obj->hitbox) && (state.buttons & 1)){
+    if(obj->hitbox->overlap(New_Point(mouse.x, mouse.y), obj->hitbox) && mouse_state[1]){
         scene->scene_end=true;
         window=obj->change_scene;
     }
@@ -53,8 +51,6 @@ void button_update(Elements *self){
 }
 
 void button_interact(Elements *self){
-
-    
 }
 
 

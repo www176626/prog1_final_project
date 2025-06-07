@@ -4,8 +4,8 @@
 #include "quest_gamescene_phys.h"
 #include "quest_gamescene_2.h"
 #include "quest_gamescene_3.h"
-#include "quest_gamescene_4.h"
-#include "quest_menu_1.h"
+#include "quest_gamescene_lake.h"
+#include "quest_menu.h"
 
 Scene *scene = NULL;
 void create_scene(SceneType type)
@@ -18,17 +18,17 @@ void create_scene(SceneType type)
     case GameScene_L:
         scene = New_gamescene(GameScene_L);
         break;
-    case quest_menu_1_L:
-        scene = New_quest_1_menu(quest_menu_1_L);
+    case quest_menu_phys_L:
+        scene = New_quest_menu(quest_menu_phys_L);
         break;
     case quest_menu_2_L:
-        scene = New_quest_1_menu(quest_menu_2_L);
+        scene = New_quest_menu(quest_menu_2_L);
         break;
     case quest_menu_3_L:
-        scene = New_quest_1_menu(quest_menu_3_L);
+        scene = New_quest_menu(quest_menu_3_L);
         break;
-    case quest_menu_4_L:
-        scene = New_quest_1_menu(quest_menu_4_L);
+    case quest_menu_lake_L:
+        scene = New_quest_menu(quest_menu_lake_L);
         break;
     case quest_gameScene_phys_L:
         scene = New_questGamePhys(quest_gameScene_phys_L);
@@ -39,8 +39,8 @@ void create_scene(SceneType type)
     case quest_gameScene_3_L:
         scene = New_questGame3(quest_gameScene_3_L);
         break;
-    case quest_gameScene_4_L:
-        scene = New_questGame4(quest_gameScene_4_L);
+    case quest_gameScene_lake_L:
+        scene = New_questGameLake(quest_gameScene_lake_L);
         break;
     
     

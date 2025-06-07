@@ -18,9 +18,8 @@ Scene *New_questGame3(int label)
     pDerivedObj->background = al_load_bitmap("assets/image/stage.jpg");
     pObj->pDerivedObj = pDerivedObj;
     // register element
-
     
-
+    
     // setting derived object function
     pObj->Update = questGame3_update;
     pObj->Draw = questGame3_draw;

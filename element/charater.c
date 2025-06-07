@@ -37,7 +37,7 @@ Elements *New_Character(int label)
     // initial the geometric information of character
     pDerivedObj->width = pDerivedObj->gif_status[0]->width;
     pDerivedObj->height = pDerivedObj->gif_status[0]->height;
-    pDerivedObj->x = 300;
+    pDerivedObj->x = 750;
     pDerivedObj->y = HEIGHT - pDerivedObj->height - 60;
     pDerivedObj->hitbox = New_Rectangle(pDerivedObj->x,
                                         pDerivedObj->y,
@@ -50,7 +50,7 @@ Elements *New_Character(int label)
     pObj->pDerivedObj = pDerivedObj;
 
     //setting interact objects
-    pObj->inter_obj[pObj->inter_len++]=questNode1_L;
+    pObj->inter_obj[pObj->inter_len++]=questNode_L;
     pObj->inter_obj[pObj->inter_len++]=questNode2_L;
     pObj->inter_obj[pObj->inter_len++]=questNode3_L;
     pObj->inter_obj[pObj->inter_len++]=questNode4_L;
@@ -210,7 +210,7 @@ void Character_interact(Elements *self) {
         
         ElementVec labelEle = _Get_label_elements(scene, inter_label);
         for(int j=0; j<labelEle.len; j++){
-            if(inter_label==questNode1_L){
+            if(inter_label==questNode_L){
                 character_interact_questNode(self, labelEle.arr[j], inter_label);
             }
             else if(inter_label==questNode2_L){

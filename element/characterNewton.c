@@ -136,6 +136,8 @@ void CharacterNewton_interact_apple(Elements *self, Elements *tar, int type){
 
     if(chra->hitbox->overlap(chra->hitbox, app->hitbox)){
         printf("HIT_apple");
+        int add = (app->type==AppleRight_L)? 1:-1;
+        score_of_phys_quest+=add;
         tar->dele=true;
     }
 }

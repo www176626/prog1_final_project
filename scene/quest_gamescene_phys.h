@@ -22,5 +22,7 @@ void questGamePhys_update(Scene *self);
 void questGamePhys_draw(Scene *self);
 void questGamePhys_destroy(Scene *self);
 void addApple(Scene* self);
+extern int score_of_phys_quest;
+
 
 #endif

@@ -17,6 +17,7 @@ Elements *New_apple(int label, int x, int y, int v)
     pDerivedObj->x = x;
     pDerivedObj->y = y;
     pDerivedObj->v = v;
+    pDerivedObj->type = label;
     pDerivedObj->hitbox = New_Circle(pDerivedObj->x + pDerivedObj->width / 2,
                                      pDerivedObj->y + pDerivedObj->height / 2,
                                      min(pDerivedObj->width, pDerivedObj->height) / 2);

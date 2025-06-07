@@ -21,7 +21,7 @@ Elements *New_Projectile(int label, int x, int y, int v)
                                      pDerivedObj->y + pDerivedObj->height / 2,
                                      min(pDerivedObj->width, pDerivedObj->height) / 2);
     // setting the interact object
-    pObj->inter_obj[pObj->inter_len++] = questNode1_L;
+    pObj->inter_obj[pObj->inter_len++] = questNode_L;
     pObj->inter_obj[pObj->inter_len++] = Floor_L;
     // setting derived object function
     pObj->pDerivedObj = pDerivedObj;
@@ -60,7 +60,7 @@ void Projectile_interact(Elements *self)
             {
                 _Projectile_interact_Floor(self, labelEle.arr[i]);
             }
-            else if (inter_label == questNode1_L)
+            else if (inter_label == questNode_L)
             {
                 _Projectile_interact_Tree(self, labelEle.arr[i]);
             }

@@ -10,6 +10,7 @@ typedef struct _apple
     int x, y;          // the position of image
     int width, height; // the width and height of image
     int v;             // the velocity of apple
+    int type;
     ALLEGRO_BITMAP *img;
     Shape *hitbox; // the hitbox of object
 } apple;

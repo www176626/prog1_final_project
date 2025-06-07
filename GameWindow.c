@@ -111,8 +111,11 @@ void game_init(Game *self)
     al_register_event_source(event_queue, al_get_mouse_event_source());                // register mouse event
     // register timer event
     fps = al_create_timer(1.0 / FPS);
+    apple_timer = al_create_timer(1/FPS);
+    phys_gamescene_timer = al_create_timer(1/FPS);
     al_register_event_source(event_queue, al_get_timer_event_source(fps));
     al_start_timer(fps);
+    al_start_timer(apple_timer);
     // initialize the icon on the display
     ALLEGRO_BITMAP *icon = al_load_bitmap("assets/image/icon.jpg");
     al_set_display_icon(self->display, icon);
@@ -131,8 +134,8 @@ bool game_update(Game *self)
         case GameScene_L:
             create_scene(GameScene_L);
             break;
-        case quest_menu_1_L:
-            create_scene(quest_menu_1_L);
+        case quest_menu_phys_L:
+            create_scene(quest_menu_phys_L);
             break;
         case quest_menu_2_L:
             create_scene(quest_menu_2_L);
@@ -140,11 +143,11 @@ bool game_update(Game *self)
         case quest_menu_3_L:
             create_scene(quest_menu_3_L);
             break;
-        case quest_menu_4_L:
-            create_scene(quest_menu_4_L);
+        case quest_menu_lake_L:
+            create_scene(quest_menu_lake_L);
             break;
-        case quest_gameScene_1_L:
-            create_scene(quest_gameScene_1_L);
+        case quest_gameScene_phys_L:
+            create_scene(quest_gameScene_phys_L);
             break;
         case quest_gameScene_2_L:
             create_scene(quest_gameScene_2_L);
@@ -152,8 +155,8 @@ bool game_update(Game *self)
         case quest_gameScene_3_L:
             create_scene(quest_gameScene_3_L);
             break;
-        case quest_gameScene_4_L:
-            create_scene(quest_gameScene_4_L);
+        case quest_gameScene_lake_L:
+            create_scene(quest_gameScene_lake_L);
             break;
         
         case -1:

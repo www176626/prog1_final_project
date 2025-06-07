@@ -3,13 +3,13 @@
 /*
    [tree function]
 */
-Elements *New_questNode(int label, int x, int y, int change_scene)
+Elements *New_questNode(int label, int x, int y, int change_scene, ALLEGRO_BITMAP *img)
 {
     questNode *pDerivedObj = (questNode *)malloc(sizeof(questNode));
     Elements *pObj = New_Elements(label);
     // setting derived object member
     pDerivedObj->change_scene=change_scene;
-    pDerivedObj->img = al_load_bitmap("assets/image/tree.png");
+    pDerivedObj->img = img;
     pDerivedObj->width = al_get_bitmap_width(pDerivedObj->img);
     pDerivedObj->height = al_get_bitmap_height(pDerivedObj->img);
     pDerivedObj->x = x;

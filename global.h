@@ -23,6 +23,8 @@ extern Point mouse;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT event;
 extern ALLEGRO_TIMER *fps;
+extern ALLEGRO_TIMER *apple_timer;
+extern ALLEGRO_TIMER *phys_gamescene_timer;
 extern bool debug_mode;
 
 #endif

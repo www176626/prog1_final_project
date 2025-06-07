@@ -14,7 +14,7 @@ typedef struct _Tree
     ALLEGRO_BITMAP *img;
     Shape *hitbox; // the hitbox of object
 } questNode;
-Elements *New_questNode(int label, int x, int y, int change_scene);
+Elements *New_questNode(int label, int x, int y, int change_scene, ALLEGRO_BITMAP *img);
 void questNode_update(Elements *self);
 void questNode_interact(Elements *self);
 void questNode_draw(Elements *self);
